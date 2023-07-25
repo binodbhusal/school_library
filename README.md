@@ -99,7 +99,8 @@ To run the project, execute the ruby file with any code runner of your choice.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- No future features for now.
+- Online Catalog and Reservation System: Implementing an online catalog and reservation system will allow students and teachers to browse through the library's collection of books, search for specific titles or authors. 
+- Reading Recommendations and Reviews: Introduce a feature that provides personalized reading recommendations to students based on their interests, reading level, and past borrowing history.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
