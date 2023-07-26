@@ -5,15 +5,7 @@ class Rental
     @date = date
     @book = book
     @person = person
-  end
-
-  def assign_rental
-    @rental = rental
     book.rentals << self
-  end
-
-  def assign_rental_to_person
-    @rental = rental
     person.rentals << self
   end
 end
