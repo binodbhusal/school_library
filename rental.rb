@@ -5,10 +5,15 @@ class Rental
     @date = date
     @book = book
     @person = person
+  end
 
-    # Add the rental to book's rentals
-    book.add_rental(self)
-    # Add the rental to person's rentals
-    person.add_rental(self)
+  def assign_rental
+    @rental = rental
+    book.rentals << self
+  end
+
+  def assign_rental_to_person
+    @rental = rental
+    person.rentals << self
   end
 end
