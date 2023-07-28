@@ -9,7 +9,7 @@ class SchoolLibraryApp
     5 => :create_rental,
     6 => :list_rentals_for_person,
     7 => :quit
-  }
+  }.freeze
 
   def initialize
     @school_library = App.new
