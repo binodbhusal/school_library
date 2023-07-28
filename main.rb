@@ -1,40 +1,55 @@
-# main.rb
 require_relative 'app'
 
-school_library = App.new
+class SchoolLibraryApp
+  MENU_CHOICES = {
+    1 => :list_books,
+    2 => :list_people,
+    3 => :create_person,
+    4 => :create_book,
+    5 => :create_rental,
+    6 => :list_rentals_for_person,
+    7 => :quit
+  }
 
-loop do
-  puts 'Welcome to the School Library App'
-  puts 'Please choose an option by entering a number:'
-  puts '1. List all books'
-  puts '2. List all people'
-  puts '3. Create a person (student/teacher)'
-  puts '4. Create a book'
-  puts '5. Create a rental'
-  puts '6. List rentals for a person'
-  puts '7. Quit'
-
-  choice = gets.chomp.to_i
-
-  case choice
-  when 1
-    school_library.list_books
-  when 2
-    school_library.list_people
-  when 3
-    school_library.create_person
-  when 4
-    school_library.create_book
-  when 5
-    school_library.create_rental
-  when 6
-    school_library.list_rentals_for_person
-  when 7
-    puts 'Thank you for using this app'
-    break
-  else
-    puts 'Invalid option. Please try again.'
+  def initialize
+    @school_library = App.new
   end
 
-  puts "\n"
+  def display_menu
+    puts 'Welcome to the School Library App'
+    puts 'Please choose an option by entering a number:'
+    MENU_CHOICES.each do |number, description|
+      puts "#{number}. #{description.capitalize}"
+    end
+  end
+
+  def handle_choice(choice)
+    action = MENU_CHOICES[choice]
+    if action
+      if action == :quit
+        puts 'Thank you for using this app'
+        exit
+      else
+        @school_library.public_send(action)
+      end
+    else
+      puts 'Invalid option. Please try again.'
+    end
+  end
+
+  def run
+    loop do
+      display_menu
+      choice = gets.chomp.to_i
+      handle_choice(choice)
+      puts "\n"
+    end
+  end
 end
+
+def main
+  school_library_app = SchoolLibraryApp.new
+  school_library_app.run
+end
+
+main
